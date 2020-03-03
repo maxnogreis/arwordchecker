@@ -1,0 +1,71 @@
+<!doctype HTML>
+<html>
+    
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js"></script>
+<script src="js/aframe-text-geometry-component.min.js"></script>
+<body style="margin: 0px; overflow: hidden;">
+
+<script>
+
+
+
+
+let markerVisible = { "letterO": false, "letterU": false, "letterR": false, "letterS": false};
+var pontos = [];
+AFRAME.registerComponent('registerevents', {
+    init: function () 
+    {
+        let marker = this.el;
+
+        marker.addEventListener('markerFound', function() {
+            markerVisible[ marker.id ] = true;
+            var markerId = marker.id;
+        
+                       
+            
+            console.log( markerVisible );
+        });
+
+        marker.addEventListener('markerLost', function() {
+            markerVisible[ marker.id ] = false;
+            // console.log( markerVisible );
+        });
+    }
+});
+
+AFRAME.registerComponent('loop', 
+{   
+    init: function()
+    {
+        
+    this.ursol = document.querySelector('#urso');
+    
+        
+
+    },
+    
+    tick: function (time, deltaTime) 
+    {
+        // for convenience
+        let mv = markerVisible, o = "letterO", u = "letterU", s = "letterS", r = "letterR";
+        
+
+        if ( (letterU.getAttribute('visible')==true) &&(letterR.getAttribute('visible')==true) &&(letterS.getAttribute('visible')==true) &&(letterO.getAttribute('visible')==true)  )
+            
+            this.ursol.setAttribute("visible", "true");
+            nome="max";
+       
+
+        
+        
+        
+
+    }   
+
+    
+});
+
+</script>
