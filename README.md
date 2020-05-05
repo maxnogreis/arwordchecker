@@ -24,6 +24,12 @@ Created by:
 
 Eduardo Kenji 
 
+https://github.com/kenjiedu
+
 Gustavo Robert Moura da Conceição
 
+https://github.com/gu-robert
+
 Maximiliano Reis 
+
+https://github.com/maxnogreis
