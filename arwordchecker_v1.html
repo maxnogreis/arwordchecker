@@ -1,0 +1,141 @@
+<!doctype HTML>
+<html>
+    
+
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js"></script>
+<script src="js/aframe-text-geometry-component.min.js"></script>
+<body style="margin: 0px; overflow: hidden;">
+
+<script>
+
+
+
+
+let markerVisible = { "letterO": false, "letterU": false, "letterR": false, "letterS": false};
+var pontos = [];
+AFRAME.registerComponent('registerevents', {
+    init: function () 
+    {
+        let marker = this.el;
+
+        marker.addEventListener('markerFound', function() {
+            markerVisible[ marker.id ] = true;
+            var markerId = marker.id;
+        
+                       
+            
+            console.log( markerVisible );
+        });
+
+        marker.addEventListener('markerLost', function() {
+            markerVisible[ marker.id ] = false;
+            // console.log( markerVisible );
+        });
+    }
+});
+
+AFRAME.registerComponent('loop', 
+{   
+    init: function()
+    {
+        
+    this.ursol = document.querySelector('#urso');
+    
+        
+
+    },
+    
+    tick: function (time, deltaTime) 
+    {
+        // for convenience
+        let mv = markerVisible, o = "letterO", a = "letterA", t = "letterT", r = "letterR";
+        
+
+        if ( (letterA.getAttribute('visible')==true) &&(letterR.getAttribute('visible')==true) &&(letterT.getAttribute('visible')==true) &&(letterO.getAttribute('visible')==true)  )
+            
+            this.ursol.setAttribute("visible", "true");
+           
+       
+
+        
+        
+        
+
+    }   
+
+    
+});
+
+</script>
+
+<a-scene embedded vr-mode-ui="enabled: false;" arjs="debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 4x4;">
+    <a-entity 
+    position="0 -0.5 -10" 
+    gltf-model="gltf: url(https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/dorime.gltf);" 
+    scale="1.0 1.0 1.0" animation="property: rotation; dur: 1500; to: 0 360 0; loop: true"id="urso" 
+    visible= "false"></a-entity>
+    
+    <a-assets>
+        <img id="grid" src="images/border.png" />
+        <a-entity 
+        position="0 0 0" 
+        gltf-model="gltf: url(https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/bear1.gltf);" 
+        scale="1.0 1.0 1.0" animation="property: rotation; dur: 1500; to: 0 360 0; loop: true"id="urso" visible= "false"></a-entity>
+        
+      
+
+
+        <a-asset-item id="exoFont" src="https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/exoBlack.typeface.json"></a-asset-item>
+	</a-assets>
+    
+    <a-marker emitevents="true" type="pattern" url="https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/letter-patterns/pattern-letterO.patt"  id="letterO">
+        <a-entity text-geometry="value: O; font: #exoFont;"
+            position="-0.1 0 0" 
+            material="color: red; src: #pixels; " 
+            
+            scale="2.0 2.0 2.0"
+            id = "letter">
+		</a-entity>
+    </a-marker>
+    <a-marker emitevents="true" type="pattern" url="https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/letter-patterns/pattern-letterR.patt"  id="letterR">
+        <a-entity text-geometry="value: R; font: #exoFont;"
+            position="-0.1 0 0" 
+            material="color: red; src: #pixels; " 
+            
+            scale="2.0 2.0 2.0"
+            id = "letter">
+		</a-entity>
+    </a-marker>
+    <a-marker emitevents="true" type="pattern" url="https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/letter-patterns/pattern-letterA.patt"  id="letterA">
+        <a-entity text-geometry="value: S; font: #exoFont;"
+            position="-0.1 0 0" 
+            material="color: red; src: #pixels; " 
+            
+            scale="2.0 2.0 2.0"
+            id = "letter">
+		</a-entity>
+    </a-marker>
+    <a-marker emitevents="true" type="pattern" url="https://raw.githubusercontent.com/maxnogreis/arwordchecker/master/letter-patterns/pattern-letterT.patt"  id="letterT">
+        <a-entity text-geometry="value: U; font: #exoFont;"
+            position="-0.1 0 0" 
+            material="color: red; src: #pixels; " 
+            
+            scale="2.0 2.0 2.0"
+            id = "letter">
+		</a-entity>
+    </a-marker>
+
+    
+
+
+
+
+    
+    <a-entity camera></a-entity>
+    <a-entity loop></a-entity>
+    
+</a-scene>
+</body>
+</html>
